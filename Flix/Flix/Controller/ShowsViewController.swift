@@ -47,6 +47,10 @@ class ShowsViewController: UIViewController, UISearchBarDelegate {
             self.shows = shows
         }
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        self.setCustomNavigationBar(barStyle: .default, tintColor: .label, shadowImage: nil)
+    }
     
 }
 

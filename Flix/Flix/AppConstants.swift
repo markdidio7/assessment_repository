@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AppConstants {
     
@@ -14,4 +15,10 @@ class AppConstants {
     static var allShowsURL = "shows"
     static var searchShowsURL = "search/shows?q="
     
+}
+
+enum CornerRadius: CGFloat {
+    case small = 8
+    case medium = 16
+    case large = 32
 }

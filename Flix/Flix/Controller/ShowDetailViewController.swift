@@ -12,6 +12,7 @@ import UIKit
 class ShowDetailViewController: UIViewController {
     
  @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var backingShowImageView: UIImageView!
     @IBOutlet var showImageView: UIImageView!
     @IBOutlet var yearLabel: UILabel!
     @IBOutlet var timeslotLabel: UILabel!
@@ -25,6 +26,8 @@ class ShowDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.setCustomNavigationBar(barStyle: .black, tintColor: .white, shadowImage: UIImage())
+        showImageView.layer.cornerRadius = CornerRadius.small.rawValue
         updateInfo()
     }
     
@@ -53,6 +56,7 @@ class ShowDetailViewController: UIViewController {
         // Return if image already loaded
         guard imageCache[imageKey] == nil else {
             self.showImageView.image = imageCache[imageKey]
+            self.backingShowImageView.image = imageCache[imageKey]
             return
         }
         
@@ -63,6 +67,7 @@ class ShowDetailViewController: UIViewController {
                 self.imageCache[imageKey] = image
                 DispatchQueue.main.async {
                     self.showImageView.image = image
+                    self.backingShowImageView.image = image
                 }
             }
             urlTask?.resume()
