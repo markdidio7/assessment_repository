@@ -4,10 +4,11 @@
 
 ### Dark Mode (iOS 13)
 
-On devices running iOS 13 or greater, apps can take advantage of Apple's system wide Dark Mode.
+On devices running iOS 13 or later, apps can take advantage of Apple's system wide Dark Mode.
 
-[logo]:https://github.com/markdidio7/assessment_repository/blob/master/examples/Screen%20Shot%202020-01-25%20at%2011.34.56%20am.png
-[logo]:https://github.com/markdidio7/assessment_repository/blob/master/examples/Screen%20Shot%202020-01-25%20at%2011.35.08%20am.png
+Light Mode|Dark Mode
+:-:|:-:
+![](examples/Screen%20Shot%202020-01-25%20at%2011.34.56%20am.png)  |  ![](examples/Screen%20Shot%202020-01-25%20at%2011.35.08%20am.png)
 
 ### API Calls
 
