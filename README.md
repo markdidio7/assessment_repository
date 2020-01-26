@@ -1,5 +1,5 @@
 # assessment_repository
-'''
-var s = "Swift syntax highlighting"
-print(s)
-'''
+```python
+s = "Python syntax highlighting"
+print s
+```
