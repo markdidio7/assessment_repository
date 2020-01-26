@@ -11,7 +11,7 @@ Light Mode|Dark Mode
 :-:|:-:
 ![](images/lastshiplightmode.png)  |  ![](images/lastshipdarkmode.png)
 
-This can be applied using the stock standard background colours or linking to the 'traitCollection.userInterfaceStyle' listener.
+This can be applied using the stock standard background colours or linking to the `traitCollection.userInterfaceStyle` listener.
 
 ```swift
 let responsiveColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
