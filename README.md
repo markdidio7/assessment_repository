@@ -1,6 +1,7 @@
 # Flix
 ### Assessment Repository
-#### Mark Di Dio
+##### Created by Mark Di Dio
+<br>
 
 ### Dark Mode (iOS 13)
 
@@ -10,25 +11,52 @@ Light Mode|Dark Mode
 :-:|:-:
 ![](images/lastshiplightmode.png)  |  ![](images/lastshipdarkmode.png)
 
-This can be applied using the stock standard background colours or linking to the system mode listener.
+This can be applied using the stock standard background colours or linking to the 'traitCollection.userInterfaceStyle' listener.
 
 ```swift
-func listen() {
-// Change your visual fields here
+let responsiveColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+    switch traitCollection.userInterfaceStyle {
+    case .dark:
+        return .black
+    default:
+        return .white
+    }
 }
 ```
-<sup>[1]Flix<sup>
+<sup>Flix - Created by Mark Di Dio<sup>
+<br>
 
 ### API Calls
 
 Closures are used in functions to access data in the background.
 
 ```swift
-func loadAllShows(completion: @escaping ([Show])->()) {
-    let fullURL = AppConstants.baseURL + AppConstants.allShowsURL
-    loadShows(from: fullURL, completion: completion)
+func loadShows(from urlString: String, completion: @escaping ([Show])->()) {
+
+    // Safely unwrap the URL string as a valid URL
+    if let url = URL(string: urlString) {
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        
+            guard let data = data,
+                let json = try? JSONSerialization.jsonObject(with: data),
+                let jsonArray = json as? [[String: AnyObject]] else { return }
+                
+            let shows = jsonArray.map { (jsonShow) -> Show in
+                if let innerJsonShow = jsonShow["show"] as? [String: AnyObject] {
+                    return Show(json: innerJsonShow)
+                } else {
+                    return Show(json: jsonShow)
+                }
+            }
+                
+            // Returns data within a completion to be used later in a closures 
+            completion(shows)
+                
+        }.resume()
+    }
 }
 ```
+<sup>Flix - Created by Mark Di Dio<sup>
 
 #### Threading
 
@@ -41,3 +69,4 @@ APICalls.get.loadAllShows { (shows) in
     }
 }
 ```
+<sup>Flix - Created by Mark Di Dio<sup>
