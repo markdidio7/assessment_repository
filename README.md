@@ -10,6 +10,15 @@ Light Mode|Dark Mode
 :-:|:-:
 ![](images/lastshiplightmode.png)  |  ![](images/lastshipdarkmode.png)
 
+This can be applied using the stock standard background colours or linking to the system mode listener.
+
+```swift
+func listen() {
+// Change your visual fields here
+}
+```
+<sup>[1]Flix<sup>
+
 ### API Calls
 
 Closures are used in functions to access data in the background.
@@ -21,7 +30,7 @@ func loadAllShows(completion: @escaping ([Show])->()) {
 }
 ```
 
-### Threading
+#### Threading
 
 The `@escaping` parameter paired with a dispatch queue forces data back onto the main thread before modifying the user-interactive layer.
 
