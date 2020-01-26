@@ -8,7 +8,7 @@ On devices running iOS 13 or later, apps can take advantage of Apple's system wi
 
 Light Mode|Dark Mode
 :-:|:-:
-![](examples/Screen%20Shot%202020-01-25%20at%2011.34.56%20am.png)  |  ![](examples/Screen%20Shot%202020-01-25%20at%2011.35.08%20am.png)
+![](images/lastshiplightmode.png)  |  ![](images/lastshipdarkmode.png)
 
 ### API Calls
 
