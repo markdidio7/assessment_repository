@@ -3,33 +3,6 @@
 ##### Created by Mark Di Dio
 <br>
 
-### Dark Mode (iOS 13)
-
-On devices running iOS 13 or later, apps can take advantage of Apple's system wide Dark Mode.
-
-Light Mode|Dark Mode
-:-:|:-:
-![](images/lastshiplightmode.png)  |  ![](images/lastshipdarkmode.png)
-
-This can be applied using the stock standard background colours or by linking to the `traitCollection.userInterfaceStyle` listener.
-
-```swift
-let responsiveColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
-    switch traitCollection.userInterfaceStyle {
-    case .dark:
-        return .black
-    default:
-        return .white
-    }
-}
-```
-<sup>Flix - Created by Mark Di Dio<sup>
-<br>
-    
-### Adaptive Layout (Landscape)
-Adaptive layout is achieved by varying traits within the storyboard to ensure the perfect fit on all screen sizes.
-![](images/theamazingracelandscape.png)
-
 ### API Calls
 `URLSession.shared.dataTask()` returns data from a specified URL address. Closures are used in functions to access data in the background.
 
@@ -76,6 +49,33 @@ APICalls.get.loadAllShows { (shows) in
 ```
 <sup>Flix - Created by Mark Di Dio<sup>
 <br>
+    
+### Dark Mode (iOS 13)
+
+On devices running iOS 13 or later, apps can take advantage of Apple's system wide Dark Mode.
+
+Light Mode|Dark Mode
+:-:|:-:
+![](images/lastshiplightmode.png)  |  ![](images/lastshipdarkmode.png)
+
+This can be applied using the stock standard background colours or by linking to the `traitCollection.userInterfaceStyle` listener.
+
+```swift
+let responsiveColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
+    switch traitCollection.userInterfaceStyle {
+    case .dark:
+        return .black
+    default:
+        return .white
+    }
+}
+```
+<sup>Flix - Created by Mark Di Dio<sup>
+<br>
+    
+### Adaptive Layout (Landscape)
+Adaptive layout is achieved by varying traits within the storyboard to ensure the perfect fit on all screen sizes.
+![](images/theamazingracelandscape.png)
 
 ### Cell Initialisation
 
