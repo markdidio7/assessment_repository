@@ -31,8 +31,7 @@ Adaptive layout is achieved by varying traits within the storyboard to ensure th
 ![](images/theamazingracelandscape.png)
 
 ### API Calls
-
-Closures are used in functions to access data in the background.
+`URLSession.shared.dataTask` returns data from a specified URL address. Closures are used in functions to access data in the background.
 
 ```swift
 func loadShows(from urlString: String, completion: @escaping ([Show])->()) {
@@ -74,3 +73,45 @@ APICalls.get.loadAllShows { (shows) in
 }
 ```
 <sup>Flix - Created by Mark Di Dio<sup>
+<br>
+
+### Cell Initialisation
+
+Within a table or collection view's `cellForRowAt indexPath: IndexPath` delegated function, cells are initialised within themselves. This clears up any unnecessary data that the hosting view controller shouldn't know about.
+
+```swift
+let cell = tableView.dequeueReusableCell(withIdentifier: "ShowCell", for: indexPath) as! ShowCell
+cell.initCell(show: shows[indexPath.row])
+```
+<sup>Flix - Created by Mark Di Dio<sup>
+<br>
+    
+### Unit Tests
+Test Driven Development (TDD) is faverable as it allows you to create a testable software that asserts your code is functioning correctly. It is especially useful when major code changes occur and you need to test that old code is funtioning the same as before.
+#### Testing Showtime Whitespaces
+```swift
+func testWhiteSpaces() {
+    XCTAssertFalse(earlySundayMorning.first == " ")
+    XCTAssertFalse(weekdays.last == " ")
+}
+```
+
+#### Testing Showtime Contents
+```swift
+func testContents() {
+    XCTAssertTrue(earlySundayMorning == "Early Sunday Mornings")
+    XCTAssertTrue(weekdays == "Weekday Nights")
+    XCTAssertTrue(weekends == "Weekend Nights")
+    XCTAssertTrue(allDays == "Nights")
+    XCTAssertTrue(specificDays == "Monday, Tuesday Nights")
+}
+```
+
+
+
+
+
+
+
+
+
