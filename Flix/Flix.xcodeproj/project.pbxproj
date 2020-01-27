@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E35424E923DEBFEE00F34C3B /* ImageCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = E35424E823DEBFEE00F34C3B /* ImageCaching.swift */; };
 		E389F0B223DAD6F70003CF3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389F0B123DAD6F70003CF3E /* AppDelegate.swift */; };
 		E389F0B423DAD6F70003CF3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389F0B323DAD6F70003CF3E /* SceneDelegate.swift */; };
-		E389F0B623DAD6F70003CF3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E389F0B523DAD6F70003CF3E /* ViewController.swift */; };
 		E389F0B923DAD6F70003CF3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E389F0B723DAD6F70003CF3E /* Main.storyboard */; };
 		E389F0BC23DAD6F70003CF3E /* Flix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E389F0BA23DAD6F70003CF3E /* Flix.xcdatamodeld */; };
 		E389F0BE23DAD6F80003CF3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E389F0BD23DAD6F80003CF3E /* Assets.xcassets */; };
@@ -36,10 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E35424E823DEBFEE00F34C3B /* ImageCaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCaching.swift; sourceTree = "<group>"; };
 		E389F0AE23DAD6F70003CF3E /* Flix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E389F0B123DAD6F70003CF3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E389F0B323DAD6F70003CF3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E389F0B523DAD6F70003CF3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E389F0B823DAD6F70003CF3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E389F0BB23DAD6F70003CF3E /* Flix.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Flix.xcdatamodel; sourceTree = "<group>"; };
 		E389F0BD23DAD6F80003CF3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,7 +103,6 @@
 				E389F0D623DAD70C0003CF3E /* Networking */,
 				E389F0B123DAD6F70003CF3E /* AppDelegate.swift */,
 				E389F0B323DAD6F70003CF3E /* SceneDelegate.swift */,
-				E389F0B523DAD6F70003CF3E /* ViewController.swift */,
 				E389F0B723DAD6F70003CF3E /* Main.storyboard */,
 				E389F0BD23DAD6F80003CF3E /* Assets.xcassets */,
 				E389F0BF23DAD6F80003CF3E /* LaunchScreen.storyboard */,
@@ -128,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				E389F0D723DAD7260003CF3E /* APICalls.swift */,
+				E35424E823DEBFEE00F34C3B /* ImageCaching.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -269,10 +269,10 @@
 			files = (
 				E389F0EA23DADA4F0003CF3E /* ShowDetailViewController.swift in Sources */,
 				E389F0E223DAD8CB0003CF3E /* ShowsViewController.swift in Sources */,
+				E35424E923DEBFEE00F34C3B /* ImageCaching.swift in Sources */,
 				E389F0BC23DAD6F70003CF3E /* Flix.xcdatamodeld in Sources */,
 				E389F0DA23DAD75C0003CF3E /* AppConstants.swift in Sources */,
 				E389F0DF23DAD8540003CF3E /* Day.swift in Sources */,
-				E389F0B623DAD6F70003CF3E /* ViewController.swift in Sources */,
 				E389F0E423DAD9190003CF3E /* Extensions.swift in Sources */,
 				E389F0B223DAD6F70003CF3E /* AppDelegate.swift in Sources */,
 				E389F0DD23DAD7D80003CF3E /* Show.swift in Sources */,

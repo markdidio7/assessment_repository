@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct Show {
-    var name: String!
+struct Show: Hashable {
+    var name: String?
     var imageKey: String?
-    var schedule: String!
+    var schedule: String?
     var premiered: String?
-    var genres: String!
-    var summary: String!
+    var genres: String?
+    var summary: String?
     var averageRating: Double?
     
     private init() { }
     
-    init(name: String!, imageKey: String?, premiered: String?, schedule: String!, genres: String!, summary: String!, averageRating: Double?) {
+    init(name: String?, imageKey: String?, premiered: String?, schedule: String?, genres: String?, summary: String?, averageRating: Double?) {
         self.name = name
         self.imageKey = imageKey
         self.premiered = premiered

@@ -112,7 +112,6 @@
         <!--Show Detail View Controller-->
         <scene sceneID="2qA-A6-ZwG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Sl3-7R-yp4" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="ShowDetailViewController" id="sDl-DK-lvX" customClass="ShowDetailViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TSL-bp-1oe"/>
@@ -281,6 +280,9 @@
                                     <constraint firstAttribute="bottom" secondItem="mWP-MX-fCO" secondAttribute="bottom" id="XPA-ks-XbV"/>
                                     <constraint firstItem="mWP-MX-fCO" firstAttribute="top" secondItem="NwC-MA-YTi" secondAttribute="top" id="hfC-Sq-wzg"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="sDl-DK-lvX" id="1CG-K5-bhx"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -312,6 +314,7 @@
                         <outlet property="yearLabel" destination="ykY-8H-rU7" id="jPY-9l-8Jh"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sl3-7R-yp4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1723.1884057971015" y="-197.54464285714286"/>
         </scene>
