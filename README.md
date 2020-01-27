@@ -3,7 +3,7 @@
 ##### Created by Mark Di Dio
 <br>
 
-This repository consists of a simple TV Show application to demonstrate my strengths and coding abilities. Please clone or download the files to access the XCode project. I hope you will consider me for employment.
+This repository consists of a simple TV Show application to demonstrate my strengths and coding abilities. Please clone or download the files to access the XCode project. For my skills, experience and more, please refer to my resume previously sent to you. If you have any other questions please feel free to contact me. I hope you will consider me for employment.
 
 ### API Calls
 `URLSession.shared.dataTask()` returns data from a specified URL address. Closures are used in functions to access data in the background.
@@ -52,7 +52,10 @@ APICalls.get.loadAllShows { (shows) in
 <sup>Flix - Created by Mark Di Dio<sup>
 <br>
     
-### Dark Mode (iOS 13)
+### Design
+While this sample app is intended to demonstrate my development abilities, it also showcases my layout and designing skills. The app consists of a clean user interface and adheres to Apple's Human Interface Guidelines.
+
+##### Dark Mode (iOS 13)
 
 On devices running iOS 13 or later, apps can take advantage of Apple's system wide Dark Mode.
 
@@ -74,8 +77,7 @@ let responsiveColor = UIColor { (traitCollection: UITraitCollection) -> UIColor 
 ```
 <sup>Flix - Created by Mark Di Dio<sup>
 <br>
-    
-### Layouts    
+     
 ##### Adaptive Layout
 Adaptive layout is achieved by varying traits within the storyboard to ensure the perfect fit on all screen sizes.
 ![](images/theamazingracelandscape.png)
@@ -102,6 +104,7 @@ weekends = show.getReadableSchedule(showSchedule: [
     "days": [ "Saturday", "Sunday"] as AnyObject
 ])
 ```
+<sup>Flix Unit Tests - Created by Mark Di Dio<sup>
 
 ##### Testing Showtime Whitespaces
 ```swift
@@ -110,6 +113,7 @@ func testWhiteSpaces() {
     XCTAssertFalse(weekdays.last == " ")
 }
 ```
+<sup>Flix Unit Tests - Created by Mark Di Dio<sup>
 
 ##### Testing Showtime Contents
 ```swift
@@ -118,6 +122,9 @@ func testContents() {
     XCTAssertTrue(weekends == "Weekend Nights")
 }
 ```
+<sup>Flix Unit Tests - Created by Mark Di Dio<sup>
+<br>
+<sup>Please Note: Sample code may differ from project code for readability and context.<sup>
 
 
 
