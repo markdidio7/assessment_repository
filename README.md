@@ -3,6 +3,8 @@
 ##### Created by Mark Di Dio
 <br>
 
+This repository consists of a simple TV Show application to demonstrate my strengths and coding abilities. Please clone or download the files to access the XCode project. I hope you will consider me for employment.
+
 ### API Calls
 `URLSession.shared.dataTask()` returns data from a specified URL address. Closures are used in functions to access data in the background.
 
@@ -73,9 +75,11 @@ let responsiveColor = UIColor { (traitCollection: UITraitCollection) -> UIColor 
 <sup>Flix - Created by Mark Di Dio<sup>
 <br>
     
-### Adaptive Layout (Landscape)
+### Layouts    
+##### Adaptive Layout
 Adaptive layout is achieved by varying traits within the storyboard to ensure the perfect fit on all screen sizes.
 ![](images/theamazingracelandscape.png)
+<br>
 
 ### Cell Initialisation
 
