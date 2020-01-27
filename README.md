@@ -11,7 +11,7 @@ Light Mode|Dark Mode
 :-:|:-:
 ![](images/lastshiplightmode.png)  |  ![](images/lastshipdarkmode.png)
 
-This can be applied using the stock standard background colours or linking to the `traitCollection.userInterfaceStyle` listener.
+This can be applied using the stock standard background colours or by linking to the `traitCollection.userInterfaceStyle` listener.
 
 ```swift
 let responsiveColor = UIColor { (traitCollection: UITraitCollection) -> UIColor in
@@ -25,6 +25,10 @@ let responsiveColor = UIColor { (traitCollection: UITraitCollection) -> UIColor 
 ```
 <sup>Flix - Created by Mark Di Dio<sup>
 <br>
+    
+### Adaptive Layout (Landscape)
+Adaptive layout is achieved by varying traits within the storyboard to ensure the perfect fit on all screen sizes.
+![](images/theamazingracelandscape.png)
 
 ### API Calls
 
