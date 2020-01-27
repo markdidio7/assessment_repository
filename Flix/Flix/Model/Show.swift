@@ -34,8 +34,8 @@ struct Show {
         let name = json["name"] as? String
         let imageKey = (json["image"] as? [String: AnyObject] ?? [:])["original"] as? String
         let premiered = getYear(premieredString: json["premiered"] as? String)
-        let schedule = getReadableSchedule(showSchedule: json["schedule"] as! [String : AnyObject])
-        let genres = getGenreString(genres: json["genres"] as! [String])
+        let schedule = getReadableSchedule(showSchedule: json["schedule"] as? [String : AnyObject])
+        let genres = getGenreString(genres: json["genres"] as? [String])
         let summary = (json["summary"] as? String)?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
         let averageRating = (json["rating"] as? [String:AnyObject] ?? [:])["average"] as? Double
         self.init(name: name, imageKey: imageKey, premiered: premiered, schedule: schedule, genres: genres, summary: summary, averageRating: averageRating)
@@ -50,46 +50,50 @@ struct Show {
         }
     }
     
-    func getReadableSchedule(showSchedule: [String: AnyObject]) -> String {
-        let time = showSchedule["time"] as! String
-        let days = showSchedule["days"] as! [String]
-        
-        var prefix = ""
-        var dayDescriptor = ""
-        var timeDescriptor = ""
-        
-        if !time.isEmpty {
-            if let hour = Int(time[..<time.index(time.startIndex, offsetBy: 2)]) {
-                prefix = hour < 6 ? "Early" : prefix
-                if hour < 12 {
-                    timeDescriptor = "Mornings"
-                } else if hour < 18 {
-                    timeDescriptor = "Afternoons"
-                } else {
-                    timeDescriptor = "Nights"
+    func getReadableSchedule(showSchedule: [String: AnyObject]?) -> String? {
+        if let time = showSchedule?["time"] as? String, let days = showSchedule?["days"] as? [String] {
+            
+            var prefix = ""
+            var dayDescriptor = ""
+            var timeDescriptor = ""
+            
+            if !time.isEmpty {
+                if let hour = Int(time[..<time.index(time.startIndex, offsetBy: 2)]) {
+                    prefix = hour < 6 ? "Early" : prefix
+                    if hour < 12 {
+                        timeDescriptor = "Mornings"
+                    } else if hour < 18 {
+                        timeDescriptor = "Afternoons"
+                    } else {
+                        timeDescriptor = "Nights"
+                    }
                 }
             }
-        }
-        
-        if Days.get.isSevenDays(daysString: days) {
-            dayDescriptor = ""
-        } else if Days.get.isWeekdays(daysString: days) {
-            dayDescriptor = "Weekday"
-        } else if Days.get.isWeekend(daysString: days) {
-            dayDescriptor = "Weekend"
-        } else {
-            for (i, day) in days.enumerated() {
-                dayDescriptor.append(String(format: "%@%@", day.capitalized, i < (days.count - 1) ? ", " : ""))
+            
+            if Days.get.isSevenDays(daysString: days) {
+                dayDescriptor = ""
+            } else if Days.get.isWeekdays(daysString: days) {
+                dayDescriptor = "Weekday"
+            } else if Days.get.isWeekend(daysString: days) {
+                dayDescriptor = "Weekend"
+            } else {
+                for (i, day) in days.enumerated() {
+                    dayDescriptor.append(String(format: "%@%@", day.capitalized, i < (days.count - 1) ? ", " : ""))
+                }
             }
+            
+            return String(format: "%@ %@ %@", prefix, dayDescriptor, timeDescriptor).trimmingCharacters(in: .whitespacesAndNewlines)
+        } else {
+            return nil
         }
-        
-        return String(format: "%@ %@ %@", prefix, dayDescriptor, timeDescriptor).trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
-    func getGenreString(genres: [String]) -> String {
+    func getGenreString(genres: [String]?) -> String {
         var genresString = ""
-        for (i, genre) in genres.enumerated() {
-            genresString.append(String(format: "%@%@", genre.capitalized, i < (genres.count - 1) ? ", " : ""))
+        if let genres = genres {
+            for (i, genre) in genres.enumerated() {
+                genresString.append(String(format: "%@%@", genre.capitalized, i < (genres.count - 1) ? ", " : ""))
+            }
         }
         return genresString
     }
