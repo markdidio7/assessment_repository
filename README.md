@@ -31,19 +31,21 @@ Adaptive layout is achieved by varying traits within the storyboard to ensure th
 ![](images/theamazingracelandscape.png)
 
 ### API Calls
-`URLSession.shared.dataTask` returns data from a specified URL address. Closures are used in functions to access data in the background.
+`URLSession.shared.dataTask()` returns data from a specified URL address. Closures are used in functions to access data in the background.
 
 ```swift
 func loadShows(from urlString: String, completion: @escaping ([Show])->()) {
 
-    // Safely unwrap the URL string as a valid URL
+    // Safely unwrap the URL string as a valid URL.
     if let url = URL(string: urlString) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
         
+            // Access returned data and safely unwrap it.
             guard let data = data,
                 let json = try? JSONSerialization.jsonObject(with: data),
                 let jsonArray = json as? [[String: AnyObject]] else { return }
                 
+            // Convert json data into an array of Show objects.
             let shows = jsonArray.map { (jsonShow) -> Show in
                 if let innerJsonShow = jsonShow["show"] as? [String: AnyObject] {
                     return Show(json: innerJsonShow)
@@ -52,7 +54,7 @@ func loadShows(from urlString: String, completion: @escaping ([Show])->()) {
                 }
             }
                 
-            // Returns data within a completion to be used later in a closures 
+            // Returns data within a completion to be used later within the closure. 
             completion(shows)
                 
         }.resume()
@@ -61,7 +63,7 @@ func loadShows(from urlString: String, completion: @escaping ([Show])->()) {
 ```
 <sup>Flix - Created by Mark Di Dio<sup>
 
-#### Threading
+##### Threading
 
 The `@escaping` parameter paired with a dispatch queue forces data back onto the main thread before modifying the user-interactive layer.
 
@@ -87,23 +89,30 @@ cell.initCell(show: shows[indexPath.row])
 <br>
     
 ### Unit Tests
-Test Driven Development (TDD) is faverable as it allows you to create a testable software that asserts your code is functioning correctly. It is especially useful when major code changes occur and you need to test that old code is funtioning the same as before.
-#### Testing Showtime Whitespaces
+Test Driven Development (TDD) is favorable as it allows you to create a testable software that asserts your code is functioning correctly. It is especially useful when major code changes occur and you need to test that old code is functioning the same as before.
+
+##### Testing Setup 
+```swift
+weekends = show.getReadableSchedule(showSchedule: [
+    "time": "23:35" as AnyObject,
+    "days": [ "Saturday",
+    "Sunday"] as AnyObject
+])
+```
+
+##### Testing Showtime Whitespaces
 ```swift
 func testWhiteSpaces() {
-    XCTAssertFalse(earlySundayMorning.first == " ")
+    XCTAssertFalse(weekdays.first == " ")
     XCTAssertFalse(weekdays.last == " ")
 }
 ```
 
-#### Testing Showtime Contents
+##### Testing Showtime Contents
 ```swift
 func testContents() {
-    XCTAssertTrue(earlySundayMorning == "Early Sunday Mornings")
     XCTAssertTrue(weekdays == "Weekday Nights")
     XCTAssertTrue(weekends == "Weekend Nights")
-    XCTAssertTrue(allDays == "Nights")
-    XCTAssertTrue(specificDays == "Monday, Tuesday Nights")
 }
 ```
 
