@@ -95,8 +95,7 @@ Test Driven Development (TDD) is favorable as it allows you to create a testable
 ```swift
 weekends = show.getReadableSchedule(showSchedule: [
     "time": "23:35" as AnyObject,
-    "days": [ "Saturday",
-    "Sunday"] as AnyObject
+    "days": [ "Saturday", "Sunday"] as AnyObject
 ])
 ```
 
