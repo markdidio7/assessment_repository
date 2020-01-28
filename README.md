@@ -6,7 +6,7 @@
 This repository consists of a simple TV Show application to demonstrate my strengths and coding abilities. Please clone or download the files to access the XCode project. For my skills, experience and more, please refer to my resume previously sent to you. If you have any other questions please feel free to contact me. I hope you will consider me for employment.
 
 ### API Calls
-`URLSession.shared.dataTask()` returns data from a specified URL address. Closures are used in functions to access data in the background.
+`URLSession.shared.dataTask()` returns data from a specified URL address. Closures are used in functions to access data from a background task.
 
 ```swift
 func loadShows(from urlString: String, completion: @escaping ([Show])->()) {
@@ -44,8 +44,9 @@ The `@escaping` parameter paired with a dispatch queue forces data back onto the
 
 ```swift
 APICalls.get.loadAllShows { (shows) in
+    self.shows = shows
     DispatchQueue.main.async {
-        self.shows = shows
+        self.tableView.reloadData()
     }
 }
 ```
