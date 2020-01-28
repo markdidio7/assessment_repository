@@ -53,6 +53,19 @@ APICalls.get.loadAllShows { (shows) in
 <sup>Flix - Created by Mark Di Dio<sup>
 <br>
     
+### Image Cache
+Caching images is used to save memory and limit processing power within the app. The caching system is stored in a singleton to enable multiple requests to the same instance.
+
+```swift
+class ImageCaching {
+    static var get: ImageCaching = ImageCaching()
+    var imageCache: [String: UIImage] = [:]
+    ...
+}
+```
+<sup>Flix - Created by Mark Di Dio<sup>
+<br>
+
 ### Design
 While this sample app is intended to demonstrate my development abilities, it also showcases my layout and designing skills. The app consists of a clean user interface and adheres to Apple's Human Interface Guidelines.
 
