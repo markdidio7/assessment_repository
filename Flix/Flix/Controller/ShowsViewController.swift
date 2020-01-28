@@ -21,23 +21,6 @@ class ShowsViewController: UIViewController, UISearchBarDelegate {
         }
     }
     
-    private var imageCache: [String: UIImage] = [:] {
-        didSet {
-            // Set the image for row matching the new key added to the cache
-            let key = Set(oldValue.keys).symmetricDifference(imageCache.keys).first
-            let show = shows.enumerated().filter({ (_, show) in
-                let imageKey = show.imageKey
-                return imageKey == key
-            }).first
-            let path = (show?.offset).map { IndexPath(row: $0, section: 0) }
-            
-            DispatchQueue.main.async {
-                let cell = path.map { self.tableView.cellForRow(at: $0) } as? ShowCell
-                cell?.showImageView?.image = key.map { self.imageCache[$0] } as? UIImage
-            }
-        }
-    }
-    
     // MARK:- ViewController Lifecycle
     
     override func viewDidLoad() {
@@ -46,10 +29,6 @@ class ShowsViewController: UIViewController, UISearchBarDelegate {
         APICalls.get.loadAllShows { (shows) in
             self.shows = shows
         }
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-//        self.setCustomNavigationBar(barStyle: .default, tintColor: .label, shadowImage: nil)
     }
     
 }
@@ -66,7 +45,7 @@ extension ShowsViewController: UITableViewDataSource {
         let show = shows[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShowCell", for: indexPath) as! ShowCell
         cell.initCell(show: show)
-        cell.showImageView.image = imageCache[show.imageKey ?? ""]
+        cell.showImageView.image = ImageCaching.get.imageCache[show.imageKey ?? ""]
         return cell
     }
     
@@ -81,21 +60,17 @@ extension ShowsViewController: UITableViewDelegate {
         let imageKey = show.imageKey ?? ""
         
         // Return if image already loaded
-        guard imageCache[imageKey] == nil else { return }
+        guard ImageCaching.get.imageCache[imageKey] == nil else { return }
         
-        if let url = URL(string: imageKey.replacingOccurrences(of: "http", with: "https")) {
-            URLSession.shared.dataTask(with: url) { [unowned self] (data, response, error) in
-                guard error == nil, let data = data else { return }
-                let image = UIImage(data: data)
-                self.imageCache[imageKey] = image
-            }.resume()
+        ImageCaching.get.downloadImage(urlString: imageKey) { (image) in
+            ImageCaching.get.updateShowsListImage(shows: self.shows, imageKey: imageKey, tableView: tableView)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let cell = sender as? ShowCell, let showDetailViewController = segue.destination as? ShowDetailViewController {
             if let indexPath = tableView.indexPath(for: cell) {
-                showDetailViewController.initView(show: shows[indexPath.row], imageCache: self.imageCache)
+                showDetailViewController.initView(show: shows[indexPath.row])
             }
         }
     }

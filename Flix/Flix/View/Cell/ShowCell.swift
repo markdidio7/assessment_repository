@@ -17,6 +17,11 @@ class ShowCell: UITableViewCell {
     
     var show: Show!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        showImageView.layer.cornerRadius = CornerRadius.small.rawValue
+    }
+    
     func initCell(show: Show) {
         self.show = show
         self.nameLabel.text = show.name
